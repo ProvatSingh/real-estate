@@ -129,9 +129,12 @@ barba.hooks.leave(() => {
   }, 1);
 });
 
-barba.hooks.enter(() => {
+barba.hooks.enter((data) => {
   // with out settimeout noet working currectly
-  imagesLoaded(document.querySelector(".main-wrapper"), function () {
+  imagesLoaded(
+    data.next.container,
+    { background: true },
+    function () {
     setTimeout(() => {
       headerAnimtion("94px");
       select(".main-wrapper").children[0].classList.add("first-section");

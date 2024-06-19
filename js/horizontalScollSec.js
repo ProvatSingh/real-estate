@@ -63,8 +63,11 @@ barba.hooks.leave(() => {
   ScrollTrigger.getAll().forEach((t) => t.kill());
   console.log("killed");
 });
-barba.hooks.enter(() => {
-  imagesLoaded(main_Wrapper).on("done", function (instance) {
+barba.hooks.enter((data) => {
+  imagesLoaded(
+    data.next.container,
+    { background: true },
+    function () {
     setTimeout(() => {
       horizontalScollSec();
       
