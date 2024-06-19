@@ -137,12 +137,18 @@ document.addEventListener("DOMContentLoaded", function () {
   barba.init({
     transitions: [
       {
-        name: 'default-transition',
+        name: "default-transition",
         leave(data) {
           return new Promise((resolve) => {
-            loaderWrapper.style = "transform:scaleY(1)";
             scroller.destroy();
-            resolve();
+            gsap.to(loaderWrapper, {
+              height: "100vh",
+              top: "auto",
+              bottom: "0",
+              onComplete:resolve,
+              
+            });
+           
           });
         },
         enter(data) {
@@ -165,11 +171,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                   );
                 }
-                
-
-
-                loaderWrapper.style = "transform:scaleY(0)";
                 resolve();
+                gsap.to(loaderWrapper, {
+                  height: "0",
+                  delay:0.8, 
+                 
+                  onComplete: function () {
+                    gsap.to(loaderWrapper, {
+                      top: "0",
+                      bottom: "auto",
+                    });
+                   
+                  },
+                });
+              
+                
               }
             );
           });
@@ -217,7 +233,9 @@ window.addEventListener("load", function () {
             "transform:scaleY(0); opacity:0;";
         }, 200); // Hide loader wrapper after the delay
         setTimeout(() => {
-          loaderWrapper.style = "transform:scaleY(0);";
+          gsap.to(loaderWrapper, {
+            height: 0,
+          });
         }, 500); // Hide loader wrapper after the delay
       }
     }, loadingTime / 100);

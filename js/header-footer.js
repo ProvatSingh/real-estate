@@ -129,13 +129,13 @@ barba.hooks.leave(() => {
   }, 1);
 });
 
-barba.hooks.afterEnter(() => {
+barba.hooks.enter(() => {
   // with out settimeout noet working currectly
   imagesLoaded(document.querySelector(".main-wrapper"), function () {
     setTimeout(() => {
       headerAnimtion("94px");
       select(".main-wrapper").children[0].classList.add("first-section");
-    }, 1000);
+    }, 2);
   });
 });
 

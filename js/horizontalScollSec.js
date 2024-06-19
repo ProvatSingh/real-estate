@@ -68,7 +68,7 @@ barba.hooks.enter(() => {
     setTimeout(() => {
       horizontalScollSec();
       
-    },100);
+    },1);
   });
   console.log("horizontalScollSec");
 });
