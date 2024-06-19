@@ -57,7 +57,6 @@ function horizontalScollSec() {
   });
 }
 imagesLoaded(main_Wrapper).on("done", function (instance) {
-
   horizontalScollSec();
 });
 barba.hooks.leave(() => {
@@ -65,8 +64,11 @@ barba.hooks.leave(() => {
   console.log("killed");
 });
 barba.hooks.enter(() => {
-  setTimeout(() => {
-    horizontalScollSec();
+  imagesLoaded(main_Wrapper).on("done", function (instance) {
+    setTimeout(() => {
+      horizontalScollSec();
+      
+    },100);
   });
   console.log("horizontalScollSec");
 });
