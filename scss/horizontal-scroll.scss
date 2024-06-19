@@ -1,0 +1,61 @@
+.horizontal-scroll {
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    align-content: center;
+    @include tab-landscape {
+        height: auto;
+    }
+    .container{
+        height: max-content !important;
+    }
+}
+
+.pin-wrap {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: calc((100vw - var(--container) + var(--container-padding)*2) / 2);
+
+    @include tab-landscape {
+        height: auto;
+    }
+    
+
+    @include mobile-lg{
+        padding-inline:var(--container-padding);
+    }
+}
+
+.portfolio-no-wrap {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @include tab-landscape {
+        flex-direction: column;
+    }
+
+    @include tab-portrait{
+        gap: 30px;
+    }
+
+    @include mobile-lg{
+        gap: 26px;
+    }
+}
+
+.portfolio-item {
+    width: 400px;
+    height: 400px;
+    border: 1px solid $border-color;
+    flex: none;
+    background: $primary-color;
+
+    @include macbook {
+        width: 1000px;
+        height: 600px;
+    }
+}

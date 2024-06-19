@@ -1,0 +1,135 @@
+.hero-section {
+    .hero-content {
+        h1 {
+            margin-bottom: 2rem;
+
+            // @include macbook {
+            //     margin-bottom: 26px;
+            // }
+
+            // @include windows-laptop {
+            //     margin-bottom: 26px;
+            // }
+
+            // @include tab-landscape {
+            //     margin-bottom: 26px;
+            // }
+        }
+
+        p {
+            font-size: 1.15em;
+            margin-bottom: 2.5em;
+
+            @include tab-landscape {
+                font-size: 1.05em;
+            }
+        }
+    }
+}
+
+.moving-banner-img {
+
+    &.section-rounded{
+        figure {
+            border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+        }
+    }
+    figure {
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        position: relative;
+        width: 100%;
+        aspect-ratio: 2 / 1;
+
+        @include macbook {
+            aspect-ratio: 2/0.95;
+
+        }
+
+        @include windows-laptop {
+            aspect-ratio: 2/0.9;
+        }
+
+        @include tab-portrait{
+            aspect-ratio: 2/1.2;
+        }
+
+        img {
+            width: 100%;
+            height: calc(100% + 20vh);
+            top: -20vh;
+            position: absolute;
+            left: 0;
+            object-fit: cover;
+
+            @include tab-portrait{
+                height: calc(100% + 15vh);
+                top: -15vh;
+            }
+        }
+    }
+}
+
+.about-us-section {
+    @include tab-landscape {
+        height: max(500px, 52vh);
+    }
+
+    @include tab-portrait{
+        height: max(530px, 58vh);
+    }
+
+    figure {
+        height: 100%;
+    }
+}
+
+.about-us-content {
+    background: var(--color-dark-medium);
+    border-radius: var(--border-radius-small);
+    padding: 3em;
+    max-width: 36em;
+    position: absolute;
+    top: calc(50% + 24px);
+    right: 13%;
+    text-align: center;
+    transform: translateY(-50%);
+
+    @include tab-landscape {
+        max-width: 29em;
+        right: 8%;
+        padding-inline: 2em;
+    }
+
+
+
+    @include tab-sm-portrait {
+        width: calc(100vw - 10%);
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    @include mobile-lg {
+        padding: 2em 2em 2.4em;
+    }
+
+    svg {
+        margin-bottom: 1.26em;
+    }
+
+    h2 {
+        margin-bottom: .45em;
+    }
+
+    p {
+        margin-bottom: 3em;
+
+        @include mobile-lg {
+            margin-bottom: 2em;
+        }
+    }
+}
+
+.expertise-section{
+    padding-bottom: calc(var(--section-padding) - (var(--border-radius) * 1.5));
+}

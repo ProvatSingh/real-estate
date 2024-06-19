@@ -1,0 +1,785 @@
+// =========== Line Decoration
+.line-decoration {
+    width: 218px;
+    height: 100%;
+    position: absolute;
+    right: 19vw;
+    top: 0;
+
+    @include tab-landscape {
+        right: 14vw;
+    }
+
+    @include tab-portrait {
+        display: none;
+    }
+
+    .line {
+        height: 100%;
+        width: 1px;
+        background: var(--color-border);
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        &:nth-child(1) {
+            transform: rotate(-9deg);
+            right: 5.7vw;
+
+            @include tab-landscape {
+                right: 9.4vw;
+            }
+        }
+
+        &:nth-child(2) {
+            transform: rotate(-9deg);
+            right: -20px;
+        }
+
+        &:nth-child(3) {
+            transform: rotate(9deg);
+
+        }
+    }
+}
+
+// =========== btn Arrow
+.btn-arrow {
+    font-size: 0;
+    width: 3.75rem;
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-dark-medium);
+    border-radius: var(--border-radius-round);
+    transition: var(--animation-primary);
+    flex: none;
+
+    @include tab-portrait {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    &:hover {
+        background: var(--color-secondary);
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+
+    &::after {
+        content: "";
+        font-size: 0;
+        width: 1.9rem;
+        height: 1.9rem;
+        background: url(../images/icons/arrow-right-big.svg) no-repeat center / contain;
+        transition: var(--animation-smooth);
+        filter: brightness(0) invert(1);
+
+        @include tab-portrait {
+            width: 1.4rem;
+            height: 1.4rem;
+        }
+    }
+}
+
+// =========== Icon With Tite & Para Card 
+.icon-tite-para {
+
+    svg,
+    img {
+        width: 36px;
+        height: 36px;
+        margin-bottom: clamp(20px, 1.6vw, 24px);
+
+        @include tab-landscape {
+            margin-bottom: clamp(20px, 1.5vw, 24px);
+        }
+    }
+
+    h3 {
+        // font-size: clamp(22px, calc(var(--title-size) * 0.9), 38px);
+        margin-bottom: clamp(16px, 1.2vw, 19px);
+    }
+}
+
+// =========== Img Block Section
+.img-block-section {
+
+    // overflow: hidden;
+    .img-block-row {
+        display: flex;
+        gap: var(--gap-padding-big);
+        align-items: center;
+        margin-bottom: clamp(50px, 10vw, 90px);
+        padding-bottom: clamp(50px, 10vw, 90px);
+        position: relative;
+
+        &::before {
+            content: "";
+            width: calc(100% + 5em);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            background: var(--color-border);
+
+            @include tab-portrait {
+                width: calc(100% + 1em);
+            }
+
+            @include tab-sm-portrait {
+                width: 100%;
+            }
+        }
+        @include tab-landscape {
+            flex-direction: column;
+        }
+
+        &:nth-child(odd) {
+            flex-direction: row-reverse;
+
+            @include tab-landscape {
+                flex-direction: column;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+
+            &::before{
+                display: none;
+            }
+        }
+    }
+
+    .img-block-conent,
+    .img-block-image {
+        width: 100%;
+        max-width: 684px;
+
+        @include tab-landscape {
+            max-width: 576px;
+        }
+
+
+    }
+
+    .img-block-image {
+        height: 27em;
+        
+        @include tab-landscape {
+            height: 384px;
+            // max-height: 384px;
+            // min-height: 228px;
+        }
+        
+        img {
+            height: 100%;
+            border-radius: var(--border-radius-small);
+            object-fit: cover;
+        }
+    }
+
+    .img-block-conent {
+        display: flex;
+        flex-direction: column;
+        gap: 38px;
+
+        @include macbook {
+            gap: 1.5em;
+        }
+
+        @include windows-laptop {
+            gap: 1.5em;
+        }
+
+        @include tab-landscape {
+            gap: 1.5em;
+        }
+
+        svg{
+            width: 2.25em;
+            height: auto;
+        }
+
+        h2,
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// =========== Expertise Card
+.home-expertise-card {
+    display: flex;
+    gap: 0px;
+    flex: none;
+    height: auto;
+    overflow: hidden;
+    width: 800px;
+
+    @include tab-landscape {
+        width: 100%;
+    }
+
+    figure {
+        flex: none;
+        height: 16.9em;
+        border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+        overflow: hidden;
+
+        @include tab-landscape {
+            width: 42%;
+            height: auto;
+        }
+
+        @include mobile-lg {
+            width: 34%;
+            height: 110px;
+        }
+
+        img {
+            height: 100%;
+
+        }
+    }
+
+    .home-expertise-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 30px;
+        border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+        background: var(--color-light-dark);
+        margin-left: -1px;
+
+        @include tab-landscape {
+            padding-inline: 20px;
+        }
+
+        h3 {
+            @include mobile-lg {
+                margin-bottom: 10px;
+            }
+        }
+
+        p {
+            @include mobile-lg {
+                height: 50px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+// =========== Articles Card
+
+.article-card {
+
+    figure {
+        margin-bottom: 1em;
+
+        a{
+            display: block;
+        }
+        img {
+            width: 100%;
+            border-radius: var(--border-radius-small);
+        }
+    }
+
+    .title {
+        height: 3.8em;
+        overflow-y: hidden;
+        margin-bottom: 1.2rem;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .author {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        margin-bottom: 0.6em;
+
+        p {
+            @extend .content-sm;
+            color: var(--color-primary);
+            margin-bottom: 0;
+
+        }
+    }
+
+    .tags {
+        @include lists;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        li {
+            flex: none;
+            transition: var(--animation-primary);
+            margin-bottom: 0;
+            font-size: 0.9em;
+
+            a {
+                border-radius: 100em;
+                height: 2em;
+                padding: 0 0.85em;
+                line-height: 2em;
+                white-space: nowrap;
+                display: block;
+                text-transform: capitalize;
+                transition: var(--animation-primary);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            &.tag {
+
+                a {
+                    background: var(--color-light-medium);
+                    color: var(--color-dark-medium);
+                }
+            }
+
+            &.tag-category {
+                a {
+                    color: var(--color-light);
+                    background: var(--color-dark-medium);
+                }
+
+            }
+        }
+
+
+    }
+
+
+}
+
+
+.card-hover-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 8px;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    border-radius: 100%;
+    pointer-events: none;
+    transition: var(--animation-primary) all;
+    overflow: hidden;
+    opacity: 0;
+    transform: rotate(45deg);
+
+    img {
+        transition: none;
+        width: 18px;
+        height: 18px;
+    }
+
+}
+
+
+.hover {
+    transition: var(--animation-primary) all;
+
+    .card-hover-icon {
+        transform: rotate(0);
+        background: var(--color-secondary);
+        border-color: var(--color-secondary);
+        margin-inline: auto 0;
+        opacity: 1;
+
+        img {
+            transition: none;
+            filter: brightness(0) invert(1);
+        }
+    }
+}
+
+// section-heading
+
+.section-heading {
+    margin-bottom: clamp(2em, 5.9vw, 3.8em);
+}
+
+// ======= breadcrumb
+
+.breadcrumb {
+    @include lists;
+    gap: 0.8em;
+    margin-bottom: 2em;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .breadcrumb-item {
+        padding-left: 0;
+        margin: 0;
+        font-size: 0.9em;
+        text-transform: capitalize;
+        color: var(--color-dark-medium);
+        transition: 0.3s all;
+
+        &::before {
+            padding-right: 0.9em;
+        }
+
+        &:hover {
+            opacity: 0.66;
+        }
+
+        &.active {
+            color: var(--color-dark-light);
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        a {
+            color: inherit;
+            display: inline-block;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+            position: relative;
+            top: -2px;
+        }
+    }
+}
+
+// common-hero
+
+.common-hero {
+    .breadcrumb {
+        @include tab-portrait {
+            margin-bottom: 1.8rem;
+        }
+
+        @include mobile-lg {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    h1 {
+        margin-bottom: 2rem;
+
+        @include tab-portrait {
+            margin-bottom: 1.8rem;
+        }
+
+        @include mobile-lg {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    p {
+        font-size: 1.15em;
+        min-height: 60px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include macbook{
+            min-height: 60px;
+        }
+
+        @include windows-laptop{
+            min-height: 60px;
+        }
+
+        @include tab-portrait {
+            min-height: auto;
+        }
+
+        // @include tab-portrait {
+        //     margin-bottom: 1.8rem;
+        // }
+
+        // @include mobile-lg {
+        //     margin-bottom: 1.5rem;
+        // }
+    }
+
+    &.text-center {
+        .breadcrumb {
+            justify-content: center;
+        }
+    }
+
+    .line-decoration{
+        z-index: 1;
+        bottom: 0;
+        top: auto;
+        .line {
+    
+            &:nth-child(1) {
+                right: 4.5vw;
+
+                @include macbook{
+                    right: 4.7vw;
+                }
+
+                @include windows-laptop{
+                    right: 4.7vw;
+                }
+    
+                @include tab-landscape {
+                    right: 6.3vw;
+                }
+            }
+        }
+    }
+}
+
+// =================== expertise-card
+.expertise-card {
+    padding: clamp(24px, 3.5vw, 48px) 0;
+    border-top: 1px solid var(--color-border);
+
+    &:last-child{
+        padding-bottom: 0;
+    }
+    a {
+        display: flex;
+        align-items: center;
+        gap: 5.0526em;
+
+        @include tab-portrait {
+            gap: 2.5em;
+        }
+
+        @include mobile-lg {
+            gap: 1em;
+        }
+
+        &:hover {
+            figure {
+                transform: scale(0.97);
+
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+            .btn-arrow {
+                background: var(--color-secondary);
+
+                &::after {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    figure {
+        max-width: 26%;
+        position: relative;
+        flex: none;
+        overflow: hidden;
+        transition: var(--animation-primary) all;
+        border-radius: var(--border-radius-small);
+
+        @include tab-portrait {
+            max-width: 30%;
+        }
+
+        @include mobile-lg {
+            width: 122px;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba($color: #000000, $alpha: 0.2);
+            opacity: 0;
+            transition: var(--animation-primary) all;
+        }
+    }
+
+    .expertise-card-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5.0526em;
+
+        @include tab-landscape {
+            gap: 2em;
+        }
+
+        @include tab-portrait {
+            gap: 1.5em;
+        }
+
+        .div {
+            max-width: 40em;
+
+            h3 {
+                margin-bottom: 0.5em;
+
+                @include mobile-lg {
+                    margin-bottom: 0.2em;
+
+                }
+            }
+
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                font-size: 0.9em;
+            }
+        }
+
+        .btn-arrow {
+            pointer-events: none;
+
+            @include mobile-lg {
+                display: none;
+            }
+        }
+    }
+}
+
+// ========= team card
+
+.team-card {
+    cursor: pointer;
+
+    figure {
+        border-radius: var(--border-radius-small);
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 1.5em;
+        transition: var(--animation-primary);
+
+        @include mobile-lg {
+            max-height: 330px;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba($color: #000000, $alpha: 0.2);
+            opacity: 0;
+            transition: var(--animation-primary) all;
+        }
+
+        figcaption {
+            position: absolute;
+            left: 1em;
+            bottom: 1em;
+            border-radius: var(--border-radius-lg);
+            height: 2em;
+            padding: 0 0.85em;
+            background: var(--color-dark-medium);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            color: var(--color-light);
+
+        }
+
+        img {
+            @include mobile-lg {
+                margin-top: -20px;
+            }
+        }
+
+    }
+
+    h3 {
+        margin-bottom: 10px;
+    }
+
+    .team-content {
+        display: flex;
+        align-items: center;
+    }
+
+    &:hover {
+        @extend .hover;
+
+        figure {
+            transform: scale(0.97);
+
+            &:after {
+                opacity: 1;
+            }
+        }
+
+        .card-hover-icon {
+            opacity: 1;
+        }
+    }
+}
+
+// ========= section-half-cover-img
+.section-half-cover-img {
+    overflow: hidden;
+    padding-block: calc(var(--section-padding) * 1.4);
+
+    @include tab-portrait {
+        padding-block: 0 var(--section-padding);
+    }
+
+    figure {
+        width: 50vw;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        @include tab-portrait {
+            width: 100vw;
+            aspect-ratio: 3 / 2;
+            position: relative;
+            left: calc(((100vw - var(--container))/ -2) - var(--container-padding));
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        @include mobile-lg {
+            left: calc(var(--container-padding) * -1);
+        }
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+// ============== divider
+.divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 3em 0;
+}

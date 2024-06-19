@@ -1,0 +1,17 @@
+.about-masonry-img{
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: calc(var(--container) + (var(--container-padding) * 2));
+        height: 2px;
+        background: var(--color-border-light);
+        transform: translateX(-50%);
+
+        @include mobile-lg{
+            width: calc(100% - 10px);
+        }
+    }
+}

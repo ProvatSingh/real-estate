@@ -1,0 +1,103 @@
+@import '_mixins.scss';
+@import '_variable.scss';
+@import '_default.scss';
+@import '_input.scss';
+@import '_utility.scss';
+@import '_section-theme-color.scss';
+@import '_component.scss';
+@import '_header.scss';
+@import '_footer.scss';
+@import 'swiper-default.scss';
+@import 'horizontal-scroll.scss';
+@import 'home.scss';
+@import 'about.scss';
+@import 'team.scss';
+@import 'contact.scss';
+
+.loader-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--color-dark-medium);
+    transition:transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    z-index: 9;
+    transform-origin:top center;
+    transform: scaleY(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    
+    h2{
+        @extend h1;
+        color: white;
+        transition: 0.3s all;
+        transform-origin: center;
+        
+    }
+}
+
+
+// .loader {
+//   width: 0;
+//   height: 4px;
+//   background-color: #3498db;
+//   animation: load 2s;
+// }
+
+// @keyframes load {
+//   0% {
+//     width: 0%;
+//   }
+
+//   100% {
+//     width: 100%;
+//   }
+// }
+
+// .styled-table {
+//   border-collapse: collapse;
+//   width: 100%;
+// }
+
+// .styled-table th,
+// .styled-table td {
+//   border: 1px solid black;
+//   padding: 8px;
+// }
+
+
+
+// .color-cell {
+//   padding: 10px;
+//   border: 1px solid black;
+//   text-align: center;
+// }
+
+// .color-box {
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 5px;
+// }
+
+// .mybox {
+//   width: 400px;
+//   height: 500px;
+//   border: 1px solid;
+//   z-index: 1;
+//   background: rgb(239, 199, 199);
+//   top: 100px;
+
+//   &::before {
+//     content: "";
+//     background: red;
+//     width: calc(100% + 40px);
+//     position: absolute;
+//     z-index: 1;
+//     top: 0;
+//     left: -20px;
+//   }
+// }

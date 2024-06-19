@@ -1,0 +1,192 @@
+@mixin heading {
+    font-family: $primary-font;
+    font-weight: 500;
+    color: var(--color-dark);
+    margin: 0 0 16px 0;
+    padding: 0;
+    position: relative;
+}
+
+@mixin button {
+    font-size: clamp(16px, 1.2vw, 19px);
+    font-weight: 400;
+    font-family: $primary-font;
+    width: max-content;
+    color: var(--color-dark-medium);
+    // height: clamp(50px, 7vw, 70px);
+    // line-height: clamp(50px, 7vw, 70px);
+    height: 3.75em;
+    line-height: 3.75em;
+    background: var(--color-light-medium);
+    display: inline-block;
+    padding-block: 0;
+    padding-inline: calc(3.75em + 0.6em) 2em;
+    border: 0;
+    border-radius: 40px;
+    vertical-align: baseline;
+    box-shadow: none;
+    transition: var(--animation-primary);
+    // @include macbook{
+    //     height: clamp(50px, 4.5vw, 70px);
+    //     line-height: clamp(50px, 4.5vw, 70px);
+    // }
+
+    // @include windows-laptop{
+    //     height: clamp(calc(50px / 0.8), calc(7vw / 8), calc(70px / 0.8));
+    // line-height: clamp(calc(50px / 0.8), calc(7vw / 8), calc(70px / 0.8));
+    // }
+}
+
+@mixin lists {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style: none;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+@mixin input {
+    width: 100%;
+    font-size: 0.9em;
+    height: 3.158em;
+    border: 1px solid transparent;
+    border-bottom-color: var(--color-border-light);
+    position: relative;
+    color: var(--color-white);
+    background: transparent;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: $primary-font;
+    outline: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+
+    @include macbook {
+        font-size: 0.8em;
+        height: 3em;
+    }
+
+    @include windows-laptop {
+        font-size: 0.8em;
+        height: 3em;
+    }
+
+    @include mobile-lg {
+        height: 3.158em;
+    }
+}
+
+@mixin input-focus {
+    border: 1px solid transparent;
+    border-bottom-color: var(--color-border-light);
+}
+
+
+@mixin transitionEffect {
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+
+@mixin monitor-lg {
+    @media all and #{$monitor-lg} {
+        @content;
+    }
+}
+
+@mixin desktop-lg {
+    @media all and #{$desktop-lg} {
+        @content;
+    }
+}
+
+
+@mixin hd-display {
+    @media all and #{$hd-display} {
+        @content;
+    }
+}
+
+@mixin macbook {
+    @media all and #{$macbook} {
+        @content;
+    }
+}
+
+@mixin windows-laptop {
+    @media all and #{$windows-laptop} {
+        @content;
+    }
+}
+
+@mixin tab-lg {
+    @media all and #{$tab-lg} {
+        @content;
+    }
+}
+
+@mixin tab-landscape {
+    @media all and #{$tab-landscape} {
+        @content;
+    }
+}
+
+@mixin tab-lg-portrait {
+    @media all and #{$tab-lg-portrait} {
+        @content;
+    }
+}
+
+@mixin tab-portrait {
+    @media all and #{$tab-portrait} {
+        @content;
+    }
+}
+
+@mixin tab-sm-portrait {
+    @media all and #{$tab-sm-portrait} {
+        @content;
+    }
+}
+
+@mixin mobile-lg {
+    @media all and #{$mobile-lg} {
+        @content;
+    }
+}
+
+@mixin mobile-sm-portrait {
+    @media all and #{$mobile-sm-portrait} {
+        @content;
+    }
+}
+
+@mixin iphone-old {
+    @media all and #{$iphone-old} {
+        @content;
+    }
+}
+
+@mixin android-mobile {
+    @media all and #{$android-mobile} {
+        @content;
+    }
+}
+
+@mixin iphone-vs {
+    @media all and #{$iphone-vs} {
+        @content;
+    }
+}

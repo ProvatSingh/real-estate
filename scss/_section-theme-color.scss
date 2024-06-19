@@ -1,0 +1,299 @@
+// if .pin-spacer parent (.bg-dark + .bg-light) this selector not work, 
+// .section-rounded for radius bg color by after, 
+// .overlaped-img-on-dark-bg for make a full screeen img overlaping prve section
+.section-rounded {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.section-before-footer {
+    border-radius: var(--border-radius);
+}
+
+.pin-spacer+.bg-dark {
+    margin-top: -1px;
+
+    &.section-rounded.overlaped-img-on-dark-bg {
+        border-radius: 0;
+
+        figure {
+            top: calc(var(--border-radius) * 1.7);
+        }
+
+        // &::before {
+        //     content: "";
+        //     background: var(--color-dark);
+        //     width: 100%;
+        //     position: absolute;
+        //     height: var(--border-radius) !important;
+        //     top: calc((var(--border-radius) * 0)) !important;
+        //     background: var(--color-dark);
+        //     z-index: -1;
+        // }
+    }
+}
+
+.pin-spacer+.bg-light,
+.bg-dark {
+    &.section-rounded {
+        &::before {
+            content: "";
+            background: var(--color-dark);
+            height: var(--border-radius);
+            width: 100%;
+            position: absolute;
+            top: -1px;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    }
+
+    &.section-rounded.overlaped-img-on-dark-bg {
+        figure {
+            top: calc(var(--border-radius) * 1.7);
+        }
+    }
+
+}
+
+.bg-dark+.pin-spacer {
+    background: var(--color-dark) !important;
+}
+
+.bg-dark+.bg-light {
+
+    &.section-rounded {
+        &::before {
+            content: "";
+            background: var(--color-dark);
+            height: var(--border-radius);
+            width: 100%;
+            position: absolute;
+            top: -1px;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+
+        // &.overlaped-img-on-dark-bg {
+
+        //     figure {
+        //         top:calc(var(--border-radius) * 1.7);
+        //     }
+
+        //     &::before {
+        //         height: var(--border-radius) !important;
+        //         top: calc((var(--border-radius) * 0)) !important;
+        //     }
+        // }
+    }
+}
+
+.bg-light+.bg-dark {
+    &.section-rounded {
+        &::before {
+            content: "";
+            background: var(--color-light);
+            height: var(--border-radius);
+            width: 100%;
+            position: absolute;
+            top: -1px;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        &.overlaped-img-on-dark-bg {
+            background: var(--color-light) !important;
+
+            figure {
+                top: calc(var(--border-radius) * 1.7);
+            }
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+.overlaped-img-on-dark-bg+section {
+    &::before {
+        display: none;
+    }
+}
+
+.bg-light + .section-before-footer{
+    &::before{
+        display: none;
+    }
+}
+.section-before-footer {
+    z-index: 1;
+}
+
+.bg-dark+.bg-dark {
+    margin-top: -1px;
+}
+
+// .bg-dark+.section-rounded.bg-dark {
+//     &::before {
+//         content: "";
+//         background: var(--color-dark);
+//         height: var(--border-radius);
+//         width: 100%;
+//         position: absolute;
+//         top: -1px;
+//         left: 0;
+//         z-index: -1;
+//         pointer-events: none;
+//     }
+
+// }
+// footer ~ section{
+//     border-radius: var(--border-radius) !important;
+//     background: red !important;
+// }
+
+// =========== theme color csss
+
+.bg-light {
+    background: var(--color-light) !important;
+}
+
+.bg-dark {
+    background-color: var(--color-dark) !important;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul li {
+        color: var(--color-light);
+    }
+
+    p {
+        color: var(--color-text-light);
+    }
+
+    .btn {
+        background: var(--color-dark-medium);
+        color: var(--color-light-medium) !important;
+
+        &::after {
+            background: var(--color-white);
+        }
+
+        &::before {
+            filter: none;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--color-dark-medium) !important;
+        }
+
+        &-red {
+            color: var(--color-dark-medium) !important;
+            background: var(--color-light-medium);
+
+            &::after {
+                background: var(--color-primary);
+            }
+
+            &::before {
+                background: url(../images/icons/arrow-right-big.svg) no-repeat center / contain;
+                filter: brightness(0) invert(1);
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                background: var(--color-light-medium);
+                color: var(--color-white) !important;
+
+                &::after {
+                    background: var(--color-secondary) !important;
+                }
+            }
+        }
+    }
+
+    .home-expertise-card {
+        .home-expertise-card-content {
+            background: var(--color-border-light);
+        }
+    }
+
+    .line-decoration {
+        .line {
+            background: var(--color-border-light);
+        }
+    }
+
+    .breadcrumb {
+
+        .breadcrumb-item {
+            color: var(--color-light-medium);
+
+            &.active {
+                color: var(--color-light-medium);
+            }
+
+            &::before {
+                color: var(--color-light-medium);
+            }
+        }
+    }
+}
+
+header.bg-dark {
+    .navbar-brand {
+        svg {
+            width: 100%;
+
+            text {
+                fill: var(--color-light);
+            }
+        }
+    }
+
+    .primary-nav {
+        ul {
+            li {
+                a {
+                    color: var(--color-light);
+                }
+            }
+        }
+    }
+
+    .search-icon {
+        border: 1px solid rgba(var(--color-light-rgb), 0.2);
+
+        svg {
+            path {
+                stroke: var(--color-light);
+                stroke-width: 1.25px;
+                transition: var(--animation-nav);
+            }
+        }
+    }
+
+    .menu-item-has-children {
+        a {
+            &::after {
+                background: url('data:image/svg+xml;utf8,<svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1L7.5 7L13.5 1" stroke="%23f5f2ef" stroke-width="2" stroke-linejoin="round"/></svg>') no-repeat center/contain;
+
+                @include tab-portrait {
+                    background: url('data:image/svg+xml;utf8,<svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1L7.5 7L13.5 1" stroke="%23434d48" stroke-width="2" stroke-linejoin="round"/></svg>') no-repeat center/contain;
+                }
+
+            }
+        }
+    }
+}

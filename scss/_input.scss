@@ -1,0 +1,344 @@
+.btn {
+    @include button;
+    position: relative;
+
+    span {
+        position: relative;
+        z-index: 1;
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: calc(3.75em + 2px);
+        width: calc(3.75em + 2px);
+        background: var(--color-primary);
+        top: -1px;
+        left: -1px;
+        border-radius: 2.105em;
+        position: absolute;
+        border: 1px solid transparent;
+        transition: var(--animation-primary);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        background: url(../images/icons/arrow-right-big.svg) no-repeat center / contain;
+        z-index: 1;
+        left: 0.99em;
+        top: 1.02em;
+        width: 1.684em;
+        height: 1.684em;
+        transition: var(--animation-primary);
+        filter: brightness(0) invert(1);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: var(--color-light-medium);
+        color: var(--color-white) !important;
+
+        &::after {
+            border-radius: 2.105em;
+            position: absolute;
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            left: -1px;
+            top: -1px;
+            background: var(--color-secondary);
+        }
+
+        &::before {
+            transform: rotate(-45deg);
+            left: 1.895em;
+        }
+    }
+
+
+
+    &-down-arrow {
+        &:after {
+            height: 0.421em;
+            width: 0.631em;
+            background: url(../images/btn-down-arrow.svg) no-repeat center;
+            top: -0.053em;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            &:after {
+                background: url(../images/btn-down-arrow-white.svg) no-repeat center;
+            }
+        }
+    }
+}
+
+input[type="submit"] {
+    @extend .btn;
+    padding-inline: 2em;
+    height: 3em;
+    line-height: 3em;
+    color: var(--color-white);
+    background: var(--color-dark-light);
+    transition: var(--animation-primary);
+
+    @include macbook {
+        height: 2.6em;
+                font-size: 0.85em;
+        line-height: 2.6em;
+    }
+
+    @include windows-laptop {
+        height: 2.6em;
+                font-size: 0.85em;
+        line-height: 2.6em;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: var(--color-secondary);
+
+    }
+}
+
+label {
+    color: var(--color-light);
+    font-size: 0.81em;
+    font-weight: 400;
+    line-height: 0.75em;
+    text-transform: capitalize;
+}
+
+%input-styles {
+    @include input;
+}
+
+%input-styles--focus {
+    @include input-focus;
+}
+
+@mixin input-styles($styles, $focus_styles) {
+    $types: 'email', 'number', 'select', 'password', 'search', 'tel', 'text', 'url', 'color', 'date', 'datetime', 'datetime-local', 'month', 'time', 'week';
+
+    @each $type in $types {
+        input[type="#{$type}"] {
+            @extend #{$styles};
+
+            &:focus {
+                @include input-focus;
+            }
+        }
+    }
+
+    select {
+        @extend #{$styles};
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url(../images/select-caret-down.svg);
+        background-repeat: no-repeat;
+        background-position: right 0.947em center;
+
+        &:focus {
+            @extend #{$focus_styles};
+        }
+    }
+
+    textarea {
+        @extend #{$styles};
+        height: 8em;
+        resize: none;
+        padding: 0;
+        border-radius: 0;
+
+        @include macbook {
+            height: 4em;
+        }
+
+        @include windows-laptop {
+            height: 4em;
+        }
+
+        &:focus {
+            @extend #{$focus_styles};
+        }
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+}
+
+@include input-styles('%input-styles', '%input-styles--focus');
+
+// ===================== check and radio
+
+@mixin checbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: -9999px !important;
+
+    &+label {
+        padding: 0 0 0 20px !important;
+        padding-left: 30px !important;
+        color: var(--color-light) !important;
+        display: inline-block !important;
+        max-width: inherit !important;
+        margin: 0px 10px 0 0 !important;
+        font-size: 18px !important;
+        font-weight: 400 !important;
+        line-height: 22px !important;
+        position: relative !important;
+        letter-spacing: 0 !important;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    &+label:before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $input-bg;
+        background: $input-bg;
+        left: 0;
+        top: 0px;
+        border-radius: 0;
+    }
+
+    &+label:after {
+        content: '';
+        background: none !important;
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        width: 5px;
+        height: 9px;
+        border: solid $primary-color;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(50deg);
+        -ms-transform: rotate(50deg);
+        transform: rotate(50deg);
+        display: none;
+    }
+
+    &:checked+label {
+        color: $primary-color !important;
+        font-weight: 400 !important;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    &:checked+label:before {
+        border-color: $primary-color;
+    }
+
+    &:checked+label:after {
+        display: block;
+    }
+
+}
+
+@mixin radio {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: -9999px !important;
+
+    &+label {
+        padding: 0 0 0 35px !important;
+        color: var(--color-light) !important;
+        display: inline-block !important;
+        max-width: inherit !important;
+        margin: 0px 10px 0 0 !important;
+        font-size: 18px !important;
+        font-weight: 400 !important;
+        line-height: 22px !important;
+        position: relative !important;
+        letter-spacing: 0 !important;
+        -webkit-user-select: none;
+        /* Safari */
+        -ms-user-select: none;
+        /* IE 10 and IE 11 */
+        user-select: none;
+        /* Standard syntax */
+    }
+
+    &+label:before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $input-bg;
+        background: $input-bg;
+        left: 0;
+        top: 0px;
+        border-radius: 55%;
+    }
+
+    &+label:after {
+        content: '';
+        position: absolute;
+        width: 7.5px;
+        height: 7.5px;
+        background: $primary-color !important;
+        left: 6.25px;
+        top: 6.25px;
+        border-radius: 55%;
+        display: none;
+    }
+
+    &:checked+label {
+        color: $primary-color !important;
+        font-weight: 400 !important;
+        user-select: none;
+    }
+
+    &:checked+label:before {
+        border-color: $primary-color !important;
+    }
+
+    &:checked+label:after {
+        display: block;
+    }
+
+}
+
+
+input[type=checkbox] {
+    @include checbox;
+}
+
+input[type=radio] {
+    @include radio;
+}
+
+
+
+
+.input-wrapper {
+    margin-bottom: 1em;
+
+    @include macbook {
+        margin-bottom: 0.51em;
+    }
+
+    @include windows-laptop {
+        margin-bottom: 0.51em;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
