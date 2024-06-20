@@ -1,0 +1,103 @@
+.row-gutter {
+    &-y-40 {
+        --bs-gutter-y: 40px;
+
+        @include tab-sm-portrait {
+            --bs-gutter-y: 20px;
+        }
+    }
+
+    &-x-40 {
+        --bs-gutter-x: 40px;
+        margin-right: calc(-.5* var(--bs-gutter-x));
+        margin-left: calc(-.5* var(--bs-gutter-x));
+
+        @include tab-sm-portrait {
+            --bs-gutter-x: 20px;
+        }
+    }
+
+    &-x-120{
+        --bs-gutter-x: var(--gap-padding-big); 
+        
+    }
+    
+}
+
+
+
+.row-gap-60 {
+    row-gap: 60px;
+
+    @include tab-landscape {
+        row-gap: 50px;
+    }
+
+    @include tab-portrait {
+        row-gap: 40px;
+    }
+}
+
+@for $i from 50 through 1 {
+    $size: $i * 2;
+
+    // Extra large screens
+    .row-gap-xl-#{$size} {
+        row-gap: #{$size}px;
+    }
+
+}
+
+@for $i from 50 through 1 {
+    $size: $i * 2;
+
+    // Medium screens
+    @include tab-landscape {
+        .row-gap-lg-#{$size} {
+            row-gap: #{$size}px;
+        }
+    }
+
+
+}
+
+@for $i from 50 through 1 {
+    $size: $i * 2;
+
+
+    // Medium screens
+    @include tab-portrait {
+        .row-gap-md-#{$size} {
+            row-gap: #{$size}px;
+        }
+    }
+
+
+}
+
+@for $i from 50 through 1 {
+    $size: $i * 2;
+
+    // Small screens
+    @include tab-sm-portrait {
+        .row-gap-sm-#{$size} {
+            row-gap: #{$size}px;
+        }
+    }
+
+
+}
+
+@for $i from 50 through 1 {
+    $size: $i * 2;
+
+    // Extra small screens
+    @include mobile-lg {
+        .row-gap-xs-#{$size} {
+            row-gap: #{$size}px;
+        }
+    }
+
+
+
+}
