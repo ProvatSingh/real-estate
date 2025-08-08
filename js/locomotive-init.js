@@ -10,7 +10,7 @@ function locoscroll(scrollerSpeed) {
     multiplier: scrollerSpeed,
     getDirection: true,
     reloadOnContextChange: true,
-    // lerp: 0.15,
+    lerp: 0.1,
     inertia: 0.5,
     touchMultiplier: 2,
     mobile: {
@@ -241,3 +241,4 @@ window.addEventListener("load", function () {
     }, loadingTime / 100);
   });
 });
+
