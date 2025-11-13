@@ -15,10 +15,13 @@ function locoscroll(scrollerSpeed) {
     mobile: {
       breakpoint: 0,
       smooth: true,
+      lerp: 0.15,
     },
     tablet: {
       breakpoint: 0,
       smooth: true,
+      lerp: 0.15,
+      
     },
   });
   // window.onresize = scroll.update();
@@ -240,6 +243,7 @@ window.addEventListener("load", function () {
     }, loadingTime / 100);
   });
 });
+
 
 
 
